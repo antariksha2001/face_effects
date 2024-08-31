@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Video Stream with Effects</title>
+    <style>
+        /* Background and basic styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('{{ url_for('static', filename='images/p.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        /* Dropdown styling */
+        select {
+            margin: 20px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        select:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Video container styling */
+        div {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flask Video Streaming with Effects</h1>
+    <select id="function" onchange="updateVideoFeed()">
+        <option value="None">None</option>
+        <option value="Face Blur">Face Blur</option>
+        <option value="Edge Detection">Edge Detection</option>
+        <option value="Sepia Filter">Sepia Filter</option>
+        <option value="Flip Video">Flip Video</option>
+    </select>
+
+    <div>
+        <img id="video" src="{{ url_for('video_feed') }}?function=None" alt="Video Stream">
+    </div>
+
+    
+
+    <script src="{{ url_for('static', filename='video_feed.js') }}"></script>
+</body>
+</html>
